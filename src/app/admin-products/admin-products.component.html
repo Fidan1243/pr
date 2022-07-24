@@ -1,0 +1,39 @@
+<app-navbar-admin></app-navbar-admin>
+<h2>Product List</h2>
+<a class="m-2 btn btn-xs btn-success" asp-controller="admin" asp-action="Add" >Add a new product</a>
+ <div>
+
+        <table class="table">
+            <tr>
+                <td>
+                    Product Name
+                </td>
+                <td>
+                    Unit Price
+                </td>
+                <td>
+                    Unit In Stock
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            
+            <tr *ngFor="let item of Products">
+                <td>{{item.ProductName}}</td>
+                <td>{{item.UnitPrice}}</td>
+                <td>{{item.InStock}}</td>
+                
+                    <td>
+                        <button class="btn btn-xs btn-info" [routerLink]="['/admin/update',item.id]" >
+                            Update
+                        </button>
+                    </td>
+                     <td>
+                        <button class="btn btn-xs btn-danger" (click)="Delete(item.id)" >
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            
+        </table>
+</div>
